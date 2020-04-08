@@ -1,13 +1,14 @@
 using System;
+using Microsoft.Azure.EventHubs;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
 namespace PublishFunctionApp
 {
-    public static class Function1
+    public static class PublishToEventHub
     {
-        [FunctionName("Function1")]
+        [FunctionName("PublishToEventHub")]
         public static void Run([TimerTrigger("*/5 * * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
