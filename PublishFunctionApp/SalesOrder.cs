@@ -7,6 +7,7 @@ namespace PublishFunctionApp
     public class SalesOrder
     {
         public string OrderId = Guid.NewGuid().ToString();
+        public double OrderAmount = (new System.Random()).NextDouble();
         public string AsJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
