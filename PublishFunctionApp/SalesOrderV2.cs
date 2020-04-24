@@ -4,6 +4,11 @@ using System.Text;
 
 namespace PublishFunctionApp
 {
+    internal static class Extensions
+    {
+        public static string RandomElement(this string[] array) =>
+            array[(new System.Random()).Next(array.Length)];
+    }
 
     public class SalesOrderV2 : SalesOrder
     {
@@ -12,7 +17,7 @@ namespace PublishFunctionApp
             "GBP", "USD"
         };
 
-        public string Currency = CurrenciesISO4217[(new System.Random()).Next(CurrenciesISO4217.Length)];
+        public string Currency = CurrenciesISO4217.RandomElement();
 
         public new static SalesOrderV2 NewOrder()
         {
