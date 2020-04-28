@@ -1,29 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace PublishFunctionApp
 {
-    internal static class Extensions
+    public class SalesOrderV2 : ISalesOrder
     {
-        public static string RandomElement(this string[] array) =>
-            array[(new System.Random()).Next(array.Length)];
-    }
+        public string OrderId = Guid.NewGuid().ToString();
+        public int[] OrderedProducts = Enumerable.Range(0, RandomArraySize(10)).ToArray();
+        public DateTime OrderCreatedUTC = DateTime.UtcNow;
 
-    public class SalesOrderV2 : SalesOrder
-    {
-        public static string[] CurrenciesISO4217 =
-        {
-            "GBP", "USD"
-        };
-
-        public string Currency = CurrenciesISO4217.RandomElement();
-
-        public new static SalesOrderV2 NewOrder()
-        {
-            return new SalesOrderV2();
-        }
-
-        public new static string GetSchemaVersion() { return "v2.0"; }
+        private static int RandomArraySize(int max, int min = 0) => (new System.Random()).Next(min, max);
+         
+        public string GetSchemaVersion { get { return "v2.0"; } }
     }
 }

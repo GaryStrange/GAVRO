@@ -1,9 +1,8 @@
-using System;
-using System.Text;
-using Microsoft.Azure.EventHubs;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
+﻿using Microsoft.Azure.EventHubs;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace PublishFunctionApp
 {
@@ -16,14 +15,15 @@ namespace PublishFunctionApp
         private static EventHubClient eventHubClient = EventHubClient.CreateWithManagedServiceIdentity(endpointAddress, entityPath);
         #endregion
 
-        [FunctionName("PublishToEventHub")]
-        public static void Run([TimerTrigger("*/5 * * * * *")]TimerInfo myTimer, ILogger log)
+        public static void PublishEvent(SalesOrderVersions version, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-            SalesOrder order = SalesOrder.NewOrder();
-            EventData eventData = new EventData(order.AsJsonUTF8());
-            eventData.Properties.Add("SchemaVersion", SalesOrder.GetSchemaVersion());
-            log.LogInformation($"Sending message attempt: {order.AsJson()}");
+
+            ISalesOrder order = SalesOrder.CreateOrder(version);
+            EventData eventData = new EventData(SalesOrder.AsJsonUTF8(order));
+            eventData.Properties.Add("SchemaVersion", order.GetSchemaVersion);
+
+            log.LogInformation($"Sending message attempt: {SalesOrder.AsJson(order)}");
             eventHubClient.SendAsync(eventData);
         }
     }

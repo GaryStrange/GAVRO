@@ -4,26 +4,37 @@ using System.Text;
 
 namespace PublishFunctionApp
 {
+    public enum SalesOrderVersions
+    {
+        V1, V1_1, V2
+    }
+
+    public interface ISalesOrder
+    {
+        string GetSchemaVersion { get; }
+    }
+
     public class SalesOrder
     {
-        public string OrderId = Guid.NewGuid().ToString();
-        public double OrderAmount = (new System.Random()).NextDouble();
-        public DateTime OrderCreatedUTC = DateTime.UtcNow;
-        public string AsJson()
+        public static string AsJson(ISalesOrder order)
         {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
+            return Newtonsoft.Json.JsonConvert.SerializeObject(order);
         }
 
-        public byte[] AsJsonUTF8()
+        public static byte[] AsJsonUTF8(ISalesOrder order)
         {
-            return Encoding.UTF8.GetBytes(this.AsJson());
+            return Encoding.UTF8.GetBytes(SalesOrder.AsJson(order));
         }
 
-        public static SalesOrder NewOrder()
+        public static ISalesOrder CreateOrder(SalesOrderVersions version)
         {
-            return new SalesOrder();
+            switch (version)
+            {
+                case SalesOrderVersions.V1: return new SalesOrderV1();
+                case SalesOrderVersions.V1_1: return new SalesOrderV1_1();
+                case SalesOrderVersions.V2: return new SalesOrderV2();
+                default: throw new NotSupportedException();
+            }
         }
-
-        public static string GetSchemaVersion() { return "v1.0"; }
     }
 }
