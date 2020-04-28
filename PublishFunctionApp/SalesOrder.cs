@@ -11,11 +11,20 @@ namespace PublishFunctionApp
 
     public interface ISalesOrder
     {
-        string GetSchemaVersion { get; }
+        string SchemaVersion { get; }
     }
 
-    public class SalesOrder
+    public static class SalesOrder
     {
+
+            public static string RandomElement(this string[] array) =>
+                array[(new System.Random()).Next(array.Length)];
+
+        public static string[] CurrenciesISO4217 =
+        {
+            "GBP", "USD"
+        };
+
         public static string AsJson(ISalesOrder order)
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(order);

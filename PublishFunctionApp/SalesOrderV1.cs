@@ -10,6 +10,6 @@ namespace PublishFunctionApp
         public double OrderAmount = (new System.Random()).NextDouble();
         public DateTime OrderCreatedUTC = DateTime.UtcNow;
 
-        public string GetSchemaVersion { get { return "v1.0"; } }
+        public string SchemaVersion { get { return "v1.0"; } }
     }
 }

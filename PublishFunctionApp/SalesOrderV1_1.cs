@@ -4,21 +4,16 @@ using System.Text;
 
 namespace PublishFunctionApp
 {
-    internal static class Extensions
+
+
+    public class SalesOrderV1_1 : ISalesOrder
     {
-        public static string RandomElement(this string[] array) =>
-            array[(new System.Random()).Next(array.Length)];
-    }
+        public string OrderId = Guid.NewGuid().ToString();
+        public double OrderAmount = (new System.Random()).NextDouble();
+        public DateTime OrderCreatedUTC = DateTime.UtcNow;
 
-    public class SalesOrderV1_1 : SalesOrderV1
-    {
-        public static string[] CurrenciesISO4217 =
-        {
-            "GBP", "USD"
-        };
+        public string Currency = SalesOrder.CurrenciesISO4217.RandomElement();
 
-        public string Currency = CurrenciesISO4217.RandomElement();
-
-        public new string GetSchemaVersion { get { return "v1.1"; } }
+        public string SchemaVersion { get { return "v1.1"; } }
     }
 }

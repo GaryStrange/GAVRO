@@ -21,7 +21,7 @@ namespace PublishFunctionApp
 
             ISalesOrder order = SalesOrder.CreateOrder(version);
             EventData eventData = new EventData(SalesOrder.AsJsonUTF8(order));
-            eventData.Properties.Add("SchemaVersion", order.GetSchemaVersion);
+            eventData.Properties.Add("SchemaVersion", order.SchemaVersion);
 
             log.LogInformation($"Sending message attempt: {SalesOrder.AsJson(order)}");
             eventHubClient.SendAsync(eventData);
