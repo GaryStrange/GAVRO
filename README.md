@@ -24,7 +24,7 @@ Create a new resource group or create a new one. Below is a screenshot of the re
 
 ## Azure Functions
 
-Next, clone the ![Publish Function App solution](https://github.com/GaryStrange/GAVRO/tree/master/PublishFunctionApp). You'll need to then publish and target the provision Function App 'gavrofunapp'. I'm using visual studio in the screenshot below.
+Next, clone and open the ![Publish Function App solution](https://github.com/GaryStrange/GAVRO/tree/master/PublishFunctionApp). You'll need to then publish and target the provisioned Function App 'gavrofunapp'. I'm using visual studio in the screenshot below.
 
 need screenshot!
 
@@ -33,6 +33,11 @@ need screenshot!
 Almost there; Databricks needs a bit of manual work to setup a storage SAS token, cluster and import the notebook.
 
 ### SAS Token
+
+Create a SAS token for the provisioned gavrostorage account. You'll need this to allow the databricks notebook access to the AVRO data. The screenshoot below shows the optios I used for my token.
+
+![SAS Token](https://github.com/GaryStrange/GAVRO/blob/master/CreateSAS.PNG)
+
 ### Cluster Config
 ### Notebook Import
 
