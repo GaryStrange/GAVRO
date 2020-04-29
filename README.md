@@ -40,9 +40,22 @@ Create a SAS token for the provisioned gavrostorage account. You'll need this to
 
 ### Cluster Config
 
-From within Databricks create a new cluster, below is an image of the config I used with the items that need editing from the default highlighted. When you hit 'Create Cluster' a new single-node cluster will be created with the name 'GAVRO'.
+From within Databricks ![create a new cluster](https://docs.databricks.com/clusters/create.html), below is an image of the config I used with the items that need editing from the default highlighted. When you hit 'Create Cluster' a new single-node cluster will be created with the name 'GAVRO'.
 
 ![Cluster Config](https://github.com/GaryStrange/GAVRO/blob/master/GavroClusterConfig.PNG)
 
 ### Notebook Import
 
+Again from Databricks ![import the notebook](https://docs.databricks.com/notebooks/notebooks-manage.html) linked below. Before you can run the notebook you'll need to paste your SAS token into cell 2.
+
+```
+storageAccName = "gavrostorage"
+containerName = "gavrocontainer"
+storageSAS = "?sv=2019-10-10&ss=b&srt=sco&sp=rl&se=2020-04-30T17:50:43Z&st=2020-04-29T09:50:43Z&spr=https&sig=kqb6z5IXagf4nZJNBsaHMs4TL5FWsnwYLTkF3w3TQiM%3D"
+```
+
+![Notebook](https://github.com/GaryStrange/GAVRO/blob/master/Notebooks/py-ReadGAVRO.html)
+
+# Finaly
+
+Sorry there's a few steps to put this altogether. I need to work making it simplier and invest some time in automation. However, if you managed to follow, you should now have a notebook that can analyse SalesOrder data as it has evolved. In the later cells of the notebook I also include examples of using implicit schema by allowing spark to decide. You may also decide to read all the v1.x sets together as they're non-breaking and the v1.1 schema is backwardly compatible with v1.0.
