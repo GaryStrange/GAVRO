@@ -18,7 +18,7 @@ To build out the Azure infrastructure
     <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-Create a new resource group or create a new one. Below is a screenshot of the resources it will create.
+As part of the ARM template deploy you'll need to either create a new resource group or use an exising one. Below is a screenshot of the resources it will create.
 
 ![Resource Group](https://github.com/GaryStrange/GAVRO/blob/master/GavroResourceGroup.PNG)
 
