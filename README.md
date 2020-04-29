@@ -26,7 +26,7 @@ As part of the ARM template deploy you'll need to either create a new resource g
 
 Next, clone and open the ![Publish Function App solution](https://github.com/GaryStrange/GAVRO/tree/master/PublishFunctionApp). You'll need to then publish and target the provisioned Function App 'gavrofunapp'. I'm using visual studio in the screenshot below.
 
-need screenshot!
+![Function Publish](https://github.com/GaryStrange/GAVRO/blob/master/GavroPublish.PNG)
 
 ## Databricks
 
