@@ -39,5 +39,25 @@ Create a SAS token for the provisioned gavrostorage account. You'll need this to
 ![SAS Token](https://github.com/GaryStrange/GAVRO/blob/master/CreateSAS.PNG)
 
 ### Cluster Config
+
+From within Databricks create a new cluster and switch from the UI tab to the JSON tab. From there, copy & paste json config below. When you hit 'Create Cluster' a new single-node low spec cluster will be created with the name 'GAVRO'.
+
+```
+{
+    "num_workers": 1,
+    "cluster_name": "GAVRO",
+    "spark_version": "6.4.x-scala2.11",
+    "spark_conf": {},
+    "node_type_id": "Standard_F4s",
+    "ssh_public_keys": [],
+    "custom_tags": {},
+    "spark_env_vars": {
+        "PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+    },
+    "autotermination_minutes": 20,
+    "init_scripts": []
+}
+```
+
 ### Notebook Import
 
