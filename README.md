@@ -4,7 +4,7 @@ This repo demonstrates how you can manage schema evolution in a big-data platfor
 ## Introduction
 The very short story; follow the guidance below to build-out a data ingestion method that incorporates schema evolution management. An Azure Function mocks an online order processing service. Orders are published to an Event Hub and captured in AVRO files using the ![Event Hub Data Capture feature](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview). The AVRO files are stored in a Storage Account which is then processed by Azure Databricks. The method enables the accurate deserialisation of data that's evolving over time.
 
-For the full write up head on over to the Medium story [placeholder-link].
+For the full write up head on over to the [Medium story](https://towardsdatascience.com/gavro-managed-big-data-schema-evolution-8217431f278f).
 
 If you want to dive right in do the following...
 
