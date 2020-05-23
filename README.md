@@ -10,7 +10,7 @@ If you want to dive right in do the following...
 
 ## Provisioning
 
-![Architecture](https://github.com/GaryStrange/GAVRO/blob/master/GAVRO.png)
+![Architecture](/GAVRO.png)
 
 To build out the Azure infrastructure
 
