@@ -48,7 +48,7 @@ From within Databricks [create a new cluster](https://docs.databricks.com/cluste
 
 Again from Databricks [import the notebook](https://docs.databricks.com/notebooks/notebooks-manage.html) linked below. Before you can run the notebook you'll need to paste your SAS token into cell 2.
 
-[Notebook](/py-ReadGAVRO.html)
+[Notebook](https://raw.githubusercontent.com/GaryStrange/GAVRO/master/Notebooks/py-ReadGAVRO.html)
 
 #### Cell 2
 ```
